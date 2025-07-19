@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RecurrenceRule, RecurrenceFrequency, Weekday, MonthWeek } from '../types';
+import { RecurrenceRule, RecurrenceFrequency, Weekday, MonthWeek, RecurrenceOption } from '../types';
 import { IntervalSelector } from './IntervalSelector';
 import { WeekdaySelector } from './WeekdaySelector';
 import { MonthWeekSelector } from './MonthWeekSelector';
@@ -8,11 +8,9 @@ import { AnimatedSection } from './AnimatedSection';
 import { HeaderSection } from './HeaderSection';
 import { FrequencySection } from './FrequencySection';
 import { DateRangeSection } from './DateRangeSection';
-import { format } from 'date-fns';
-
 interface RecurrenceConfigProps {
   rule: RecurrenceRule;
-  selectedOption: any;
+  selectedOption: RecurrenceOption;
   setFrequency: (frequency: RecurrenceFrequency) => void;
   setInterval: (interval: number) => void;
   toggleWeekday: (weekday: Weekday) => void;

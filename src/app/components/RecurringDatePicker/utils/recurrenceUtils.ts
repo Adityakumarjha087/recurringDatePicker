@@ -1,5 +1,5 @@
-import { addDays, addMonths, addWeeks, addYears, isSameDay, isSameMonth, isSameYear, isToday, getDay, getDate, getDaysInMonth, getWeek, lastDayOfMonth, format, parseISO } from 'date-fns';
-import { RecurrenceRule, RecurrenceFrequency, Weekday, MonthWeek, DateRange, CalendarDay } from '../types';
+import { addDays, addMonths, addWeeks, addYears, isSameDay, isToday, getDay, format, lastDayOfMonth } from 'date-fns';
+import { RecurrenceRule, Weekday, MonthWeek, CalendarDay } from '../types';
 
 const WEEKDAY_MAP: Record<Weekday, number> = {
   SU: 0,
@@ -44,7 +44,7 @@ export const generateRecurringDates = (rule: RecurrenceRule, count: number = 30)
       case 'WEEKLY': {
         if (weekdays.length > 0) {
           // Find the next occurrence of any of the selected weekdays
-          let nextDate = addDays(date, 1);
+          const nextDate = addDays(date, 1);
           const currentWeekday = getDay(nextDate);
           
           // Find the next selected weekday

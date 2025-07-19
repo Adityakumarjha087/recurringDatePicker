@@ -1,4 +1,4 @@
-export * from './RecurringDatePicker';
+export { default as RecurringDatePicker } from './RecurringDatePicker';
 export * from './types';
 
 export * from './components/FrequencySelector';

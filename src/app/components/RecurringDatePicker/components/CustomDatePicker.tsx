@@ -19,16 +19,15 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   minDate,
   onChange,
   onClose,
-  className = '',
 }) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(selectedDate || new Date());
-  const [showDatePicker, setShowDatePicker] = useState<boolean>(true);
+  const [isOpen] = useState(false);
   const datePickerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ top: 0, left: 0 });
 
   // Position the date picker relative to the trigger element
   useEffect(() => {
-    if (datePickerRef.current && showDatePicker) {
+    if (datePickerRef.current && isOpen) {
       const triggerElement = document.activeElement as HTMLElement;
       if (triggerElement) {
         const rect = triggerElement.getBoundingClientRect();
@@ -45,7 +44,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
         });
       }
     }
-  }, [showDatePicker]);
+  }, [isOpen]);
 
   // Close date picker when clicking outside
   useEffect(() => {
@@ -212,7 +211,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
     );
   };
 
-  if (!showDatePicker) return null;
+  if (!isOpen) return null;
 
   const pickerStyle: React.CSSProperties = {
     position: 'fixed',

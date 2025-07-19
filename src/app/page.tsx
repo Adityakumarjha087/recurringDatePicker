@@ -1,13 +1,17 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { RecurrenceRule } from './components/RecurringDatePicker/types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RecurringDatePicker } from './components/RecurringDatePicker';
 import { CheckCircleIcon, DocumentDuplicateIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Head from 'next/head';
 
 export default function Home() {
-  const [recurrence, setRecurrence] = useState<any>(null);
+  const [recurrence, setRecurrence] = useState<Partial<RecurrenceRule> & {
+    startDate?: Date | string;
+    endDate?: Date | string | null;
+  }>();
   const [copied, setCopied] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);

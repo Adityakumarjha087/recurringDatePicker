@@ -49,7 +49,7 @@ export const useRecurrenceLogic = (
       // Find the current day of week from startDate
       const dayOfWeek = currentRule.startDate.getDay();
       const defaultWeekday = Object.entries(WEEKDAY_MAP).find(
-        ([_, value]) => value === dayOfWeek
+        ([, value]) => value === dayOfWeek
       )?.[0] as Weekday | undefined;
       
       // If we have a valid default weekday, set it, otherwise default to Monday
@@ -65,7 +65,7 @@ export const useRecurrenceLogic = (
   // Initialize with default dates on mount
   useEffect(() => {
     generateDates(30);
-  }, []);
+  }, [generateDates]);
 
   // Memoize the current rule to prevent unnecessary effect triggers
   const currentRule = useMemo(() => rule, [rule]);

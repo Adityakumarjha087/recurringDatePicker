@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { format, addMonths, subMonths, isSameMonth, isSameDay, getDaysInMonth, startOfMonth, getDay, addDays } from 'date-fns';
+import { format, addMonths, subMonths, isSameDay, getDaysInMonth, startOfMonth, getDay, addDays } from 'date-fns';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 
 interface CalendarPreviewProps {
@@ -41,7 +41,7 @@ export const CalendarPreview: React.FC<CalendarPreviewProps> = ({
     }
     
     return result;
-  }, [visibleDate, selectedDates, startDate, endDate]);
+  }, [selectedDates, startDate, endDate, daysInMonth, startDay, startDayOfWeek]);
 
   const handlePrevMonth = () => {
     onVisibleDateChange(subMonths(visibleDate, 1));

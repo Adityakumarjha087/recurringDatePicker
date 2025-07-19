@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { RecurringDatePicker } from '../RecurringDatePicker';
+import RecurringDatePicker from '../RecurringDatePicker';
 import '@testing-library/jest-dom';
 
 describe('RecurringDatePicker Integration', () => {

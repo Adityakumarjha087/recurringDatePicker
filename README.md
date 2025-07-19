@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Recurring Date Picker for Next.js
 
-## Getting Started
+A flexible and reusable React component for selecting recurring dates, inspired by scheduling features in apps like TickTick. Built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+![Recurring Date Picker Demo](https://via.placeholder.com/800x500.png?text=Recurring+Date+Picker+Demo)
+
+## Features
+
+- 🗓️ Multiple recurrence patterns: Daily, Weekly, Monthly, Yearly
+- ⚙️ Customizable intervals (e.g., every 2 weeks, every 3 months)
+- 📅 Day of week selection for weekly patterns
+- 🗓️ Advanced monthly patterns (e.g., "The second Tuesday of every month")
+- 📆 Date range selection with start and optional end date
+- 👀 Visual calendar preview of selected dates
+- 🎨 Responsive design with Tailwind CSS
+- 🧪 Comprehensive test coverage with Jest and React Testing Library
+
+## Installation
 
 ```bash
-npm run dev
+npm install recurring-date-picker
 # or
-yarn dev
+yarn add recurring-date-picker
 # or
-pnpm dev
-# or
-bun dev
+pnpm add recurring-date-picker
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```tsx
+'use client';
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+import { useState } from 'react';
+import { RecurringDatePicker } from 'recurring-date-picker';
 
-## Learn More
+export default function MyComponent() {
+  const [recurrence, setRecurrence] = useState(null);
 
-To learn more about Next.js, take a look at the following resources:
+  return (
+    <div className="max-w-2xl mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-6">Schedule Recurring Event</h1>
+      <RecurringDatePicker 
+        value={recurrence}
+        onChange={setRecurrence}
+      />
+      
+      {recurrence && (
+        <div className="mt-8 p-4 bg-gray-50 rounded-lg">
+          <h2 className="text-lg font-semibold mb-2">Recurrence Rule</h2>
+          <pre className="text-sm bg-white p-4 rounded overflow-x-auto">
+            {JSON.stringify(recurrence, null, 2)}
+          </pre>
+        </div>
+      )}
+    </div>
+  );
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Props
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `value` | `object` | No | The current recurrence rule object |
+| `onChange` | `(rule: object) => void` | No | Callback when the recurrence rule changes |
+| `className` | `string` | No | Additional CSS class for the root element |
 
-## Deploy on Vercel
+## Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) to view the component in the browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Testing
+
+Run the test suite:
+
+```bash
+npm test
+# or
+yarn test
+```
+
+## Building for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+## License
+
+MIT
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

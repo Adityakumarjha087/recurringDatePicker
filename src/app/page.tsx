@@ -69,7 +69,7 @@ export default function Home() {
             </div>
             <div className="flex items-center space-x-3">
               <a 
-                href="https://github.com/yourusername/recurring-date-picker"
+                href="https://github.com/Adityakumarjha087/recurringDatePicker"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all duration-200 border border-gray-200 hover:border-gray-300"
